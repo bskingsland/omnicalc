@@ -17,7 +17,7 @@ class CalculationsController < ApplicationController
 
     @character_count_without_spaces = @text.delete(" ").length
 
-    @occurrences = "Replace this string with your answer."
+    @occurrences = @text.scan(@special_word).count
 
     # ================================================================================
     # Your code goes above.
