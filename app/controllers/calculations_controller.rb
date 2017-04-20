@@ -15,7 +15,7 @@ class CalculationsController < ApplicationController
 
     @character_count_with_spaces = @text.length
 
-    @character_count_without_spaces = @text.
+    @character_count_without_spaces = @text.delete(" ").length
 
     @occurrences = "Replace this string with your answer."
 
