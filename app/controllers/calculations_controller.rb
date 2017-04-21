@@ -92,7 +92,7 @@ class CalculationsController < ApplicationController
 
     @range = @maximum-@minimum
 
-    @median = "Replace this string with your answer."
+    @median = (@numbers.sort[@numbers.count/2]+@numbers.sort[(@numbers.count-1)/2])/2
 
     @sum = @numbers.sum
 
