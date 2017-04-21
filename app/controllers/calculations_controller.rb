@@ -17,7 +17,7 @@ class CalculationsController < ApplicationController
 
     @character_count_without_spaces = @text.delete(" ").length
 
-    @occurrences = @text.scan(@special_word).count
+    @occurrences = @text.downcase.scan(@special_word).count
 
     # ================================================================================
     # Your code goes above.
@@ -98,11 +98,28 @@ class CalculationsController < ApplicationController
 
     @mean = @sum/@count
 
-    @variance = "Replace this string with your answer."
+    sum_squared_differences = 0
+    @sorted_numbers.each do |num|
+      current_difference = (num - @mean)**2
+      sum_squared_differences += current_difference
+    end
 
-    @standard_deviation = "Replace this string with your answer."
+    @variance = sum_squared_differences/@count
 
-    @mode = "Replace this string with your answer."
+    @standard_deviation = Math.sqrt(@variance)
+
+    most_frequent_number = 0
+    occurences_of_most_frequent_number = 0
+    @sorted_numbers.each do |num|
+      current_count=@sorted_numbers.count(num)
+      if current_count > occurences_of_most_frequent_number
+        most_frequent_number=num
+        occurences_of_most_frequent_number=current_count
+      end
+
+    end
+
+    @mode = most_frequent_number
 
     # ================================================================================
     # Your code goes above.
